@@ -1,0 +1,68 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class SpiceJetFlightBookingTest {
+
+public static void main(String[] args) {
+// Set the path to chromedriver.exe
+System.setProperty(“webdriver.chrome.driver”, “path_to_chromedriver.exe”);
+
+// Create a new instance of ChromeDriver
+WebDriver driver = new ChromeDriver();
+
+// Navigate to SpiceJet website
+driver.get(“https://www.spicejet.com/");
+
+// Validate sign-up page
+WebElement signUpButton = driver.findElement(By.id(“ctl00_HyperLinkLogin”));
+signUpButton.click();
+name_input = driver.find_element_by_id(“name”)
+name_input.send_keys(“Test User”)
+
+// Fill out non-mandatory fields
+email_input = driver.find_element_by_id(“email”)
+email_input.send_keys(“test@example.com”)
+
+// Click on sign-up button
+password_input = driver.find_element_by_id(“password”)
+password_input.send_keys(“password123”)
+
+// Login with dummy email ID and password
+WebElement loginButton = driver.findElement(By.id(“ctl00_HyperLinkLogin”));
+loginButton.click();
+login_button = driver.find_element_by_id(“login_button”)
+login_button.click()
+
+// Search for one-way flight
+origin_input = driver.find_element_by_id(“origin”)
+origin_input.send_keys(“New York”)
+
+// Search for round trip flight
+destination_input = driver.find_element_by_id(“destination”)
+destination_input.send_keys(“Los Angeles”)
+
+// Select a flight and proceed to booking page
+flight_selection = driver.find_element_by_xpath(“//div[@class=’flight’]//button”)
+flight_selection.click()
+
+// Fill out booking form with dummy passenger and payment information
+passenger_name_input = driver.find_element_by_id(“passenger_name”)
+passenger_name_input.send_keys(“Test Passenger”)
+
+// Verify booking was successful
+confirmation_message = driver.find_element_by_id(“confirmation_message”)
+if confirmation_message.is_displayed():
+System.print= new print(“Booking successful!”);
+else:
+System.print new print(“Booking failed.”);
+
+// Validate fields available on booking page
+checkin_button = driver.find_element_by_id(“checkin_button”)
+checkin_button.click()
+
+// Close the web browser
+driver.quit();
+}
+}
